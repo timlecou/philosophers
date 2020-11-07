@@ -21,11 +21,11 @@ int    ft_parsing(t_data *data, int ac, char **av)
     data->time_to_die = ft_atoi_philo(av[2]);
     data->time_to_eat = ft_atoi_philo(av[3]);
     data->time_to_sleep = ft_atoi_philo(av[4]);
+    if (ac == 6)
+        data->time_must_eat = ft_atoi_philo(av[5]);
     if (!(data->ph = malloc(sizeof(t_philo) * data->ph_number)))
         return (EXIT_FAILURE);
     while (++i < data->ph_number)
         init_t_philo(data, i);
-    if (ac == 6)
-        data->time_must_eat = ft_atoi_philo(av[5]);
     return (EXIT_SUCCESS);
 }

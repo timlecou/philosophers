@@ -21,6 +21,8 @@ t_data  init_data_struct(void)
     data.time_to_die = 0;
     data.time_to_eat = 0;
     data.time_to_sleep = 0;
+    data.start_time = 0;
+    data.index = 0;
     return (data);
 }
 
@@ -28,4 +30,7 @@ void init_t_philo(t_data *data, int id)
 {
     data->ph[id].id = id;
     data->ph[id].thread = 0;
+    data->ph[id].r_fork = 0;
+    data->ph[id].l_fork = 0;
+    data->ph[id].has_fork = 0;
 }

@@ -13,19 +13,25 @@
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
-typedef struct  s_philo
+typedef struct      s_philo
 {
-    int         id;
-    pthread_t   thread;
-}               t_philo;
+    int             id;
+    int             r_fork;
+    int             l_fork;
+    int             has_fork;
+    pthread_t       thread;
+}                   t_philo;
 
-typedef struct  s_data
+typedef struct      s_data
 {
-    int         ph_number;
-    int         time_to_eat;
-    int         time_to_sleep;
-    int         time_to_die;
-    int         time_must_eat;
-    t_philo     *ph;
-}               t_data;
+    int             ph_number;
+    int             time_to_eat;
+    int             time_to_sleep;
+    int             time_to_die;
+    int             time_must_eat;
+    int             index;
+    t_philo         *ph;
+    long            start_time;
+    pthread_mutex_t forks;
+}                   t_data;
 #endif
