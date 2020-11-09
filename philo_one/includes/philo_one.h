@@ -26,4 +26,7 @@ t_data  init_data_struct(void);
 void    init_t_philo(t_data *data, int id);
 int     ft_parsing(t_data *data, int ac, char **av);
 void    ft_putnbr(int nb);
+void    init_neighs(t_data *data, int id);
+void    ft_usleep(long value);
+long    get_time(void);
 #endif

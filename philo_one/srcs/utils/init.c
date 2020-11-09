@@ -33,4 +33,20 @@ void init_t_philo(t_data *data, int id)
     data->ph[id].r_fork = 0;
     data->ph[id].l_fork = 0;
     data->ph[id].has_fork = 0;
+    data->ph[id].last_time_eat = 0;
+    data->ph[id].has_eat = 0;
+    data->ph[id].r_neigh = 0;
+    data->ph[id].l_neigh = 0;
+}
+
+void       init_neighs(t_data *data, int id)
+{
+    if (id == 0)
+        data->ph[id].r_neigh = data->ph_number - 1;
+    else
+        data->ph[id].r_neigh = id - 1;
+    if (id == data->ph_number - 1)
+        data->ph[id].l_neigh = 0;
+    else
+        data->ph[id].l_neigh = id + 1;
 }

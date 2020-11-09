@@ -19,7 +19,11 @@ typedef struct      s_philo
     int             r_fork;
     int             l_fork;
     int             has_fork;
+    long            last_time_eat;
+    int             has_eat;
     pthread_t       thread;
+    int             r_neigh;
+    int             l_neigh;
 }                   t_philo;
 
 typedef struct      s_data
@@ -32,6 +36,7 @@ typedef struct      s_data
     int             index;
     t_philo         *ph;
     long            start_time;
+    pthread_t       d_th;
     pthread_mutex_t forks;
 }                   t_data;
 #endif
