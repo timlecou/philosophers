@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/20 15:20:12 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/20 16:19:25 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_data
 {
 	int				index;
 	int				stop;
+	int				all_fed;
 	int				number;
 	int				ph_number;
 	int				time_to_eat;

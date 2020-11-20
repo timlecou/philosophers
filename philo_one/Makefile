@@ -7,7 +7,7 @@ INCLUDES = includes
 
 NAME = philo_one
 
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -Wextra -Werror -Wall -pthread
 
 all:
 	$(CC) $(FLAGS) -o $(NAME) $(SRCS) -I $(INCLUDES)
