@@ -6,13 +6,39 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/20 16:43:21 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/20 17:13:30 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
-void	ft_print(int n, int id, char *str, t_data *data)
+void	ft_print(int n, int id, int state, t_data *data)
+{
+	if (data->stop == 1)
+		return ;
+	pthread_mutex_lock(&data->msg);
+	ft_putnbr(n);
+	if (id != -1)
+	{
+		write(1, " ", 1);
+		ft_putnbr(id);
+	}
+	if (state == FORK)
+		write(1, " has taken a fork\n", 18);
+	else if (state == EATING)
+		write(1, " is eating\n", 11);
+	else if (state == SLEEPING)
+		write(1, " is sleeping\n", 13);
+	else if (state == THINKING)
+		write(1, " is thinking\n", 13);
+	else if (state == DIED)
+		write(1, " died\n", 6);
+	else if (state == FED)
+		write(1, " everyone is fed\n", 17);
+	pthread_mutex_unlock(&data->msg);
+}
+
+/*void	ft_print(int n, int id, char *str, t_data *data)
 {
 	if (data->stop == 1)
 		return ;
@@ -25,7 +51,7 @@ void	ft_print(int n, int id, char *str, t_data *data)
 	}
 	ft_putstr(str);
 	pthread_mutex_unlock(&data->msg);
-}
+}*/
 
 long	get_time(void)
 {
@@ -70,9 +96,9 @@ void	take_forks(t_data *data, int id)
 		if (data->ph[id].has_fork == 1)
 		{
 			ft_print((int)(get_time() - data->start_time),
-			id + 1, " has taken a fork\n", data);
+			id + 1, FORK, data);
 			ft_print((int)(get_time() - data->start_time),
-			id + 1, " has taken a fork\n", data);
+			id + 1, FORK, data);
 			break ;
 		}
 	}
@@ -82,7 +108,7 @@ int		eat(t_data *data, int id)
 {
 	pthread_mutex_lock(&data->eat[id]);
 	ft_print((int)(get_time() - data->start_time),
-	id + 1, " is eating\n", data);
+	id + 1, EATING, data);
 	ft_usleep(data->time_to_eat * 1000);
 	data->ph[id].has_eat = 1;
 	data->ph[id].eat_count++;
@@ -116,7 +142,7 @@ void	*start_routine(void *d)
 		if (eat(data, id))
 			break ;
 		ft_print((int)(get_time() -
-		data->start_time), id + 1, " is sleeping\n", data);
+		data->start_time), id + 1, SLEEPING, data);
 		ft_usleep(data->time_to_sleep * 1000);
 		if (data->time_must_eat > 0)
 			if (data->ph[id].eat_count == data->time_must_eat)
@@ -127,7 +153,7 @@ void	*start_routine(void *d)
 		if (data->stop == 1)
 			break ;
 		ft_print((int)(get_time() -
-		data->start_time), id + 1, " is thinking\n", data);
+		data->start_time), id + 1, THINKING, data);
 	}
 	data->number--;
 	return (NULL);
@@ -149,7 +175,7 @@ int	death_routine(t_data *data)
 			{
 				pthread_mutex_lock(&data->eat[i]);
 				ft_print((int)(get_time()
-				- data->start_time), i + 1, " died\n", data);
+				- data->start_time), i + 1, DIED, data);
 				data->stop = 1;
 				return (-1);
 			}
@@ -231,6 +257,6 @@ int		main(int ac, char **av)
 	wait_all_philo_to_finish(&data);
 	if (data.all_fed == 1)
 		ft_print((int)get_time() - data.start_time
-		, -1, " everyone is fed\n", &data);
+		, -1, FED, &data);
 	return (EXIT_SUCCESS);
 }
