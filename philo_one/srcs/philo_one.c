@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/20 15:20:02 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/20 15:40:35 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	ft_print(int n, int id, char *str, t_data *data)
 	ft_putnbr(n);
 	ft_putstr(" ");
 	ft_putnbr(id);
+	ft_putstr(str);
+	pthread_mutex_unlock(&data->msg);
+}
+
+void	ft_print_2(int n, char *str, t_data *data)
+{
+	if (data->stop == 1)
+		return ;
+	pthread_mutex_lock(&data->msg);
+	ft_putnbr(n);
 	ft_putstr(str);
 	pthread_mutex_unlock(&data->msg);
 }
@@ -100,9 +110,9 @@ void	*start_routine(void *d)
 		ft_print((int)(get_time() -
 		data->start_time), id + 1, " is sleeping\n", data);
 		ft_usleep(data->time_to_sleep * 1000);
-		if (data->ph[i].eat_count == data->time_must_eat)
+		if (data->ph[id].eat_count == data->time_must_eat)
 		{
-			data->fed = 1;
+			data->ph[id].fed = 1;
 			break ;
 		}
 		if (data->stop == 1)
@@ -194,10 +204,27 @@ int	launch_philo(t_data *data)
 	return (EXIT_SUCCESS);
 }
 
+int		everyone_fed(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->ph[i].eat_count)
+	{
+		if (data->ph[i].fed == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	wait_all_philo_to_finish(t_data *data)
 {
 	while (data->number > 1)
 		;
+	if (everyone_fed(data))
+		ft_print_2((int)get_time() - data->start_time
+		, " everyone is fed\n", data);
 }
 
 int		main(int ac, char **av)
