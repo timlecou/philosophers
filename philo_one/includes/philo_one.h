@@ -12,6 +12,7 @@
 
 #ifndef PHILO_ONE_H
 # define PHILO_ONE_H
+# include "define.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
@@ -29,4 +30,6 @@ void    ft_putnbr(int nb);
 void    init_neighs(t_data *data, int id);
 void    ft_usleep(long value);
 long    get_time(void);
+void    message(long time, int id, char *str);
+int     ft_error(char *str);
 #endif

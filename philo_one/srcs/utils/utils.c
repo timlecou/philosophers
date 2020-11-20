@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philo_one.h"
+#include "philo_one.h"
 
 void    ft_putstr(char *str)
 {
@@ -70,7 +70,18 @@ void    ft_putnbr(int nb)
         ft_putchar(nb + 48);
 }
 
-void    ft_usleep(long value)
+void	ft_usleep(long n)
 {
-    usleep(value);
+    struct timeval	start;
+    struct timeval	current;
+
+    gettimeofday(&start, NULL);
+    while (1)
+    {
+        usleep(50);
+        gettimeofday(&current, NULL);
+        if ((current.tv_sec - start.tv_sec) * 1000000 +
+            (current.tv_usec - start.tv_usec) > n)
+            break ;
+    }
 }
