@@ -2,11 +2,12 @@
 # define DEFINE_H
 # define L_FORK 1
 # define R_FORK 0
-# define EATING 2
-# define SLEEPING 3
-# define THINKING 4
-# define DIED 5
-# define FED 6
-# define FORK 7
+# define EATING " is eating\n"
+# define SLEEPING " is sleeping\n"
+# define THINKING " is thinking\n"
+# define DIED " died\n"
+# define FED "everyone is fed\n"
+# define FORK " has taken a fork\n"
+# define WRONG_NB_ARG "wrong number of arguments\n"
 
 #endif

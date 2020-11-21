@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/12/11 13:56:38 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:16:23 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,16 @@ void	ft_usleep(long n)
             (current.tv_usec - start.tv_usec) > n)
             break ;
     }
+}
+
+int		ft_strlen(char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

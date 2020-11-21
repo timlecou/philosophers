@@ -6,52 +6,23 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/20 17:13:30 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:20:31 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
-void	ft_print(int n, int id, int state, t_data *data)
+void	ft_print(int n, int id, char *state, t_data *data)
 {
+	int		size;
+
+	size = nb_chiffre(n) + nb_chiffre(id) + ft_strlen(state) + 1;
 	if (data->stop == 1)
 		return ;
 	pthread_mutex_lock(&data->msg);
-	ft_putnbr(n);
-	if (id != -1)
-	{
-		write(1, " ", 1);
-		ft_putnbr(id);
-	}
-	if (state == FORK)
-		write(1, " has taken a fork\n", 18);
-	else if (state == EATING)
-		write(1, " is eating\n", 11);
-	else if (state == SLEEPING)
-		write(1, " is sleeping\n", 13);
-	else if (state == THINKING)
-		write(1, " is thinking\n", 13);
-	else if (state == DIED)
-		write(1, " died\n", 6);
-	else if (state == FED)
-		write(1, " everyone is fed\n", 17);
+	ft_itoa_philo(n, id, state, size);
 	pthread_mutex_unlock(&data->msg);
 }
-
-/*void	ft_print(int n, int id, char *str, t_data *data)
-{
-	if (data->stop == 1)
-		return ;
-	pthread_mutex_lock(&data->msg);
-	ft_putnbr(n);
-	if (id != -1)
-	{
-		ft_putstr(" ");
-		ft_putnbr(id);
-	}
-	ft_putstr(str);
-	pthread_mutex_unlock(&data->msg);
-}*/
 
 long	get_time(void)
 {
@@ -249,14 +220,13 @@ int		main(int ac, char **av)
 	data = init_data_struct();
 	data.start_time = get_time();
 	if (ac != 5 && ac != 6)
-		return (ft_error("wrong number of arguments\n"));
+		return (ft_error(WRONG_NB_ARG));
 	if (ft_parsing(&data, ac, av) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (launch_philo(&data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	wait_all_philo_to_finish(&data);
 	if (data.all_fed == 1)
-		ft_print((int)get_time() - data.start_time
-		, -1, FED, &data);
+		write(1, FED, ft_strlen(FED));
 	return (EXIT_SUCCESS);
 }

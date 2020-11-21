@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/01/11 15:06:38 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:16:39 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include "structures.h"
 
 int     ft_atoi_philo(char *str);
+void	ft_itoa_philo(unsigned int time, unsigned int n, char *txt, unsigned int i);
+unsigned int		nb_chiffre(unsigned int nb);
 void    ft_putstr(char *str);
 t_data  init_data_struct(void);
 void    init_t_philo(t_data *data, int id);
@@ -32,4 +34,5 @@ void    ft_usleep(long value);
 long    get_time(void);
 void    message(long time, int id, char *str);
 int     ft_error(char *str);
+int		ft_strlen(char *str);
 #endif
