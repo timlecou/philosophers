@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/21 14:20:31 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:28:20 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,20 @@ long	get_time(void)
 
 int		everyone_fed(t_data *data)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < data->ph_number)
 	{
 		if (data->ph[i].fed == 0)
 			return (0);
-		i++;
+		++i;
 	}
 	data->all_fed = 1;
 	return (1);
 }
 
-void	take_forks(t_data *data, int id)
+void	take_forks(t_data *data, unsigned int id)
 {
 	while (data->ph[id].has_fork == 0)
 	{
@@ -132,7 +132,7 @@ void	*start_routine(void *d)
 
 int	death_routine(t_data *data)
 {
-	int i;
+	unsigned int i;
 	long time;
 
 	i = 0;
@@ -151,14 +151,14 @@ int	death_routine(t_data *data)
 				return (-1);
 			}
 		}
-		i++;
+		++i;
 	}
 	return (0);
 }
 
 int	init_mutex(t_data *data)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	if (!(data->forks = malloc(sizeof(pthread_mutex_t) * data->ph_number)))
@@ -170,14 +170,14 @@ int	init_mutex(t_data *data)
 	{
 		pthread_mutex_init(&data->eat[i], NULL);
 		pthread_mutex_init(&data->forks[i], NULL);
-		i++;
+		++i;
 	}
 	return (EXIT_SUCCESS);
 }
 
 int	launch_philo(t_data *data)
 {
-	int	 i;
+	unsigned int	 i;
 
 	i = 0;
 	if (init_mutex(data) == EXIT_FAILURE)
@@ -189,7 +189,7 @@ int	launch_philo(t_data *data)
 			return (EXIT_FAILURE);
 		pthread_detach(data->ph[i].thread);
 		usleep(10);
-		i += 2;
+		i = i + 2;
 	}
 	i = 1;
 	ft_usleep(5000);
@@ -200,9 +200,9 @@ int	launch_philo(t_data *data)
 			return (EXIT_FAILURE);
 		pthread_detach(data->ph[i].thread);
 		usleep(10);
-		i += 2;
+		i = i + 2;
 	}
-	while (death_routine(data) == 0 && everyone_fed(data)/*data->all_fed*/ == 0)
+	while (death_routine(data) == 0 && everyone_fed(data) == 0)
 		;
 	return (EXIT_SUCCESS);
 }

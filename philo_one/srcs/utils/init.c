@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/20 16:19:46 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:29:44 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    init_t_philo(t_data *data, int id)
 	data->ph[id].eat_count = 0;
 }
 
-void       init_neighs(t_data *data, int id)
+void       init_neighs(t_data *data, unsigned int id)
 {
     if (id == 0)
         data->ph[id].r_neigh = data->ph_number - 1;
