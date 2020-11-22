@@ -6,26 +6,11 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 12:23:13 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 17:53:17 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
-
-int		everyone_fed(t_data *data)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (i < data->ph_number)
-	{
-		if (data->ph[i].fed == 0)
-			return (0);
-		++i;
-	}
-	data->all_fed = 1;
-	return (1);
-}
 
 void	*start_routine(void *d)
 {

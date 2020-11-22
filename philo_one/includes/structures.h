@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 11:56:51 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 17:02:13 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_data
 	int				index;
 	int				die;
 	int				all_fed;
-	int				number;
+	unsigned int	number;
 	unsigned int	ph_number;
 	int				time_to_eat;
 	int				time_to_sleep;

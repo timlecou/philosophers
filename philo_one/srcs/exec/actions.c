@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:47:24 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 15:43:52 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 17:59:01 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ int		eat(t_data *data, int id)
 	id + 1, EATING, data);
 	ft_usleep(data->time_to_eat * 1000);
 	data->ph[id].has_eat = 1;
-	if (data->time_must_eat > 0)
+	if (data->ph[id].eat_count > 0)
 		data->ph[id].eat_count--;
-	data->ph[id].has_fork = 0;
 	pthread_mutex_unlock(&data->forks[id]);
 	pthread_mutex_unlock(&data->forks[data->ph[id].r_neigh]);
 	return (EXIT_SUCCESS);

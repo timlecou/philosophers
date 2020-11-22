@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 12:24:17 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 17:50:25 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int ac, char **av)
 	if (launch_philo(&data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	wait_all_philo_to_finish(&data);
-	if (everyone_fed(&data) == 1)
+	if (!data.die)
 		write(1, FED, ft_strlen(FED));
 	ft_free_all(&data);
 	return (EXIT_SUCCESS);
