@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 11:30:07 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 11:56:51 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ typedef struct		s_philo
 	int				has_fork;
 	long			last_time_eat;
 	int				has_eat;
-	int				r_fork;
-	int				l_fork;
 	int				r_neigh;
 	int				l_neigh;
 	int				fed;
@@ -35,7 +33,6 @@ typedef struct		s_data
 	int				die;
 	int				all_fed;
 	int				number;
-	int				d_number;
 	unsigned int	ph_number;
 	int				time_to_eat;
 	int				time_to_sleep;

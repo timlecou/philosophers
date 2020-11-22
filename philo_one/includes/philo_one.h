@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 10:55:02 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 12:24:36 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void	*death_routine(void *d);
 int		eat(t_data *data, int id);
 void	ft_print(int time, int id, char *state, t_data *data);
 void	take_forks(t_data *data, unsigned int id);
+void	ft_free_all(t_data *data);
 #endif

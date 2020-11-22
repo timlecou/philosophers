@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 11:30:17 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 12:16:14 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ t_data  init_data_struct(void)
 
     data.ph_number = 0;
     data.number = 0;
-    data.d_number = 0;
     data.all_fed = 0;
     data.time_must_eat = 0;
     data.time_to_die = 0;
@@ -33,17 +32,14 @@ t_data  init_data_struct(void)
 void    init_t_philo(t_data *data, int id)
 {
     data->ph[id].id = id;
-    data->ph[id].fed = 0;
     data->ph[id].thread = 0;
     data->ph[id].death_thread = 0;
-    data->ph[id].r_fork = 0;
-    data->ph[id].l_fork = 0;
     data->ph[id].has_fork = 0;
     data->ph[id].last_time_eat = 0;
     data->ph[id].has_eat = 0;
     data->ph[id].r_neigh = 0;
     data->ph[id].l_neigh = 0;
-	data->ph[id].eat_count = 0;
+	data->ph[id].eat_count = data->time_must_eat;
 }
 
 void       init_neighs(t_data *data, unsigned int id)

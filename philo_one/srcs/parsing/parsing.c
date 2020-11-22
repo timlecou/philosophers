@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 11:26:28 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 12:10:05 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int    ft_parsing(t_data *data, int ac, char **av)
     i = 0;
     data->ph_number = ft_atoi_philo(av[1]);
     data->number = data->ph_number;
-    data->d_number = data->ph_number;
     data->time_to_die = ft_atoi_philo(av[2]);
     data->time_to_eat = ft_atoi_philo(av[3]);
     data->time_to_sleep = ft_atoi_philo(av[4]);
+    data->time_must_eat = -1;
     if (ac == 6)
         data->time_must_eat = ft_atoi_philo(av[5]);
     if (!(data->ph = malloc(sizeof(t_philo) * data->ph_number)))
