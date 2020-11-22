@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/21 14:27:51 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 11:30:07 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct		s_philo
 {
 	pthread_t		thread;
+	pthread_t		death_thread;
 	int				id;
 	int				has_fork;
 	long			last_time_eat;
@@ -31,9 +32,10 @@ typedef struct		s_philo
 typedef struct		s_data
 {
 	int				index;
-	int				stop;
+	int				die;
 	int				all_fed;
 	int				number;
+	int				d_number;
 	unsigned int	ph_number;
 	int				time_to_eat;
 	int				time_to_sleep;

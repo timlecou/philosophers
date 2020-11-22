@@ -1,9 +1,10 @@
 SRCS = srcs/philo_one.c srcs/utils/utils.c srcs/utils/init.c srcs/parsing/parsing.c\
-        srcs/error/error.c srcs/utils/ft_itoa_philo.c
+        srcs/error/error.c srcs/utils/ft_itoa_philo.c\
+		srcs/exec/actions.c srcs/exec/launch.c srcs/exec/routines.c
 
 CC = gcc
 
-INCLUDES = includes
+INCLUDES = ./includes
 
 NAME = philo_one
 

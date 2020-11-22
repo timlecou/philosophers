@@ -6,11 +6,34 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:01:32 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/21 14:11:27 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/22 11:30:56 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
+
+long	get_time(void)
+{
+	struct timeval  tp;
+	long			milliseconds;
+
+	gettimeofday(&tp, NULL);
+	milliseconds = tp.tv_sec * 1000;
+	milliseconds += tp.tv_usec / 1000;
+	return (milliseconds);
+}
+
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	int i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (-1);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
 
 unsigned int	nb_chiffre(unsigned int n)
 {
@@ -55,3 +78,17 @@ void	ft_itoa_philo(unsigned int time,
 	write(1, nb, ft_strlen(nb));
 }
 
+void	ft_print(int n, int id, char *state, t_data *data)
+{
+	int		size;
+
+	size = nb_chiffre(n) + nb_chiffre(id) + ft_strlen(state) + 1;
+	pthread_mutex_lock(&data->msg);
+	if (data->die == 1 && ft_strcmp(state, DIED) != 0)
+	{
+		pthread_mutex_unlock(&data->msg);
+		return ;
+	}
+	ft_itoa_philo(n, id, state, size);
+	pthread_mutex_unlock(&data->msg);
+}
