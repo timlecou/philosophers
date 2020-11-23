@@ -6,13 +6,13 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:39:24 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 15:51:09 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 17:03:30 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_two.h"
 
-char		*ft_strdup(char *str)
+char			*ft_strdup(char *str)
 {
 	int		i;
 	char	*res;
@@ -29,7 +29,7 @@ char		*ft_strdup(char *str)
 	return (res);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char			*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -115,5 +115,5 @@ char			*ft_itoa_name(char *str, int id)
 	tmp2 = tmp;
 	tmp = ft_strjoin(str, tmp);
 	free(tmp2);
-	return (tmp);	
+	return (tmp);
 }
