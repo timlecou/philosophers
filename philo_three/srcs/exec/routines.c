@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 18:20:55 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 20:53:53 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	*death_routine(void *d)
 					- g_data.start_time), philo->id + 1, DIED);
 				}
 				sem_post(philo->eat);
-				return (NULL);
+				exit(1);
 			}
 			sem_post(philo->eat);
 			usleep(4000);
 		}
-	return (NULL);
+	exit(EXIT_SUCCESS);
 }
