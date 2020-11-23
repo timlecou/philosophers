@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_one.h                                        :+:      :+:    :+:   */
+/*   philo_two.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:21:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 15:34:00 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 16:02:24 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_ONE_H
-# define PHILO_ONE_H
+#ifndef PHILO_TWO_H
+# define PHILO_TWO_H
 # include "define.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
 # include <string.h>
+# include <semaphore.h>
 # include <unistd.h>
 # include <sys/time.h>
 # include "structures.h"
 
 t_philo			*init_philo_list(int i, int nb);
 int				ft_atoi_philo(char *str);
+char			*ft_itoa_name(char *str, int id);
 void			ft_itoa_philo(unsigned int time, unsigned int n,
 				char *txt, unsigned int i);
 unsigned int	nb_chiffre(unsigned int nb);
