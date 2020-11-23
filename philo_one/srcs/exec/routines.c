@@ -6,68 +6,64 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 10:03:45 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 12:04:12 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
+extern	t_data	g_data;
+
 void	*start_routine(void *d)
 {
-	t_data	  *data;
-	int		 id;
+	t_philo		*philo;
 
-	data = (t_data*)d;
-	id = data->index;
-	printf("[%d]\n", id);
-	init_neighs(data, id);
-	while (!data->die)
+	philo = (t_philo*)d;
+	init_neighs(philo);
+	while (!g_data.die)
 	{
-		take_forks(data, id);
-		pthread_mutex_lock(&data->eat[id]);
-		data->ph[id].last_time_eat = get_time();
-		pthread_mutex_unlock(&data->eat[id]);
-		eat(data, id);
-		if (data->ph[id].eat_count == 0)
+		take_forks(philo);
+		pthread_mutex_lock(&philo->eat);
+		philo->last_time_eat = get_time();
+		pthread_mutex_unlock(&philo->eat);
+		eat(philo);
+		if (philo->eat_count == 0)
 			break ;
 		ft_print((int)(get_time() -
-		data->start_time), id + 1, SLEEPING, data);
-		ft_usleep(data->time_to_sleep * 1000);
+		g_data.start_time), philo->id + 1, SLEEPING);
+		ft_usleep(g_data.time_to_sleep * 1000);
 		ft_print((int)(get_time() -
-		data->start_time), id + 1, THINKING, data);
+		g_data.start_time), philo->id + 1, THINKING);
 	}
-	data->number--;
+	g_data.number--;
 	return (NULL);
 }
 
 void	*death_routine(void *d)
 {
-	t_data			*data;
-	unsigned int	i;
+	t_philo			*philo;
 	long 			time;
 
-	data = (t_data*)d;
-	i = data->index;
-	printf("{%d}\n", i);
+	philo = (t_philo*)d;
 	time = 0;
-	while (!data->die)
+	while (!g_data.die)
 	{
-		if (data->ph[i].has_eat == 1)
+		if (philo->has_eat == 1)
 		{
-			pthread_mutex_lock(&data->eat[i]);
-			time = get_time() - data->ph[i].last_time_eat;
-			if (time > data->time_to_die || data->ph[i].eat_count == 0)
+			pthread_mutex_lock(&philo->eat);
+			time = get_time() - philo->last_time_eat;
+			if (time > g_data.time_to_die || philo->eat_count == 0)
 			{
-				if (!data->die && data->ph[i].eat_count != 0)
+				if (!g_data.die && philo->eat_count != 0)
 				{
-					data->die = 1;
+					g_data.die = 1;
 					ft_print((int)(get_time()
-					- data->start_time), i + 1, DIED, data);
+					- g_data.start_time), philo->id + 1, DIED);
 				}
-				pthread_mutex_unlock(&data->eat[i]);
+				pthread_mutex_unlock(&philo->eat);
 				return (NULL);
 			}
-			pthread_mutex_unlock(&data->eat[i]);
+			pthread_mutex_unlock(&philo->eat);
 			usleep(4000);
 		}
 	}

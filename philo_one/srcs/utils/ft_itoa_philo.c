@@ -6,11 +6,13 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:01:32 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 11:30:56 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 11:18:30 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
+
+extern	t_data	g_data;
 
 long	get_time(void)
 {
@@ -78,17 +80,17 @@ void	ft_itoa_philo(unsigned int time,
 	write(1, nb, ft_strlen(nb));
 }
 
-void	ft_print(int n, int id, char *state, t_data *data)
+void	ft_print(int n, int id, char *state)
 {
 	int		size;
 
 	size = nb_chiffre(n) + nb_chiffre(id) + ft_strlen(state) + 1;
-	pthread_mutex_lock(&data->msg);
-	if (data->die == 1 && ft_strcmp(state, DIED) != 0)
+	pthread_mutex_lock(&g_data.msg);
+	if (g_data.die == 1 && ft_strcmp(state, DIED) != 0)
 	{
-		pthread_mutex_unlock(&data->msg);
+		pthread_mutex_unlock(&g_data.msg);
 		return ;
 	}
 	ft_itoa_philo(n, id, state, size);
-	pthread_mutex_unlock(&data->msg);
+	pthread_mutex_unlock(&g_data.msg);
 }

@@ -6,32 +6,34 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:47:24 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 17:59:01 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 10:50:50 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
-void	take_forks(t_data *data, unsigned int id)
+extern	t_data	g_data;
+
+void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(&data->forks[id]);
-	pthread_mutex_lock(&data->forks[data->ph[id].r_neigh]);
-	data->ph[id].has_fork = 1;
-	ft_print((int)(get_time() - data->start_time),
-	id + 1, FORK, data);
-	ft_print((int)(get_time() - data->start_time),
-	id + 1, FORK, data);
+	pthread_mutex_lock(&g_data.forks[philo->id]);
+	pthread_mutex_lock(&g_data.forks[philo->r_neigh]);
+	philo->has_fork = 1;
+	ft_print((int)(get_time() - g_data.start_time),
+	philo->id + 1, FORK);
+	ft_print((int)(get_time() - g_data.start_time),
+	philo->id + 1, FORK);
 }
 
-int		eat(t_data *data, int id)
+int		eat(t_philo *philo)
 {
-	ft_print((int)(get_time() - data->start_time),
-	id + 1, EATING, data);
-	ft_usleep(data->time_to_eat * 1000);
-	data->ph[id].has_eat = 1;
-	if (data->ph[id].eat_count > 0)
-		data->ph[id].eat_count--;
-	pthread_mutex_unlock(&data->forks[id]);
-	pthread_mutex_unlock(&data->forks[data->ph[id].r_neigh]);
+	ft_print((int)(get_time() - g_data.start_time),
+	philo->id + 1, EATING);
+	ft_usleep(g_data.time_to_eat * 1000);
+	philo->has_eat = 1;
+	if (philo->eat_count > 0)
+		philo->eat_count--;
+	pthread_mutex_unlock(&g_data.forks[philo->id]);
+	pthread_mutex_unlock(&g_data.forks[philo->r_neigh]);
 	return (EXIT_SUCCESS);
 }

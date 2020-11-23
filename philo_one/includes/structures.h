@@ -6,42 +6,42 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 17:02:13 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 11:43:28 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
 
+typedef	struct		s_data
+{
+	long			start_time;
+	unsigned int	all_fed;
+	unsigned int	number;
+	unsigned int	die;
+	unsigned int	time_to_die;
+	unsigned int	time_to_eat;
+	unsigned int	time_to_sleep;
+	unsigned int	time_must_eat;
+	unsigned int	ph_number;
+	pthread_mutex_t	msg;
+	pthread_mutex_t	*forks;
+}					t_data;
+
 typedef struct		s_philo
 {
 	pthread_t		thread;
 	pthread_t		death_thread;
-	int				id;
-	int				has_fork;
+	pthread_mutex_t	eat;
 	long			last_time_eat;
-	int				has_eat;
-	int				r_neigh;
-	int				l_neigh;
-	int				fed;
-	int				eat_count;
+	unsigned int	id;
+	unsigned int	has_fork;
+	unsigned int	has_eat;
+	unsigned int	r_neigh;
+	unsigned int	l_neigh;
+	unsigned int	fed;
+	unsigned int	eat_count;
+	struct s_philo	*next;
 }					t_philo;
 
-typedef struct		s_data
-{
-	int				index;
-	int				die;
-	int				all_fed;
-	unsigned int	number;
-	unsigned int	ph_number;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				time_to_die;
-	int				time_must_eat;
-	t_philo			*ph;
-	long			start_time;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	msg;
-	pthread_mutex_t	*eat;
-}					t_data;
 #endif

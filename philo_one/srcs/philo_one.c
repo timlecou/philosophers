@@ -6,33 +6,36 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 17:50:25 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 11:44:04 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
-void	wait_all_philo_to_finish(t_data *data)
+t_data	g_data;
+
+void	wait_all_philo_to_finish(void)
 {
-	while (data->number != 0)
+	while (g_data.number != 0)
 		;
 }
 
 int		main(int ac, char **av)
 {
-	t_data  data;
+	t_philo	*philo;
 
-	data = init_data_struct();
-	data.start_time = get_time();
+	init_data_struct();
+	g_data.start_time = get_time();
 	if (ac != 5 && ac != 6)
 		return (ft_error(WRONG_NB_ARG));
-	if (ft_parsing(&data, ac, av) == EXIT_FAILURE)
+	if (ft_parsing(ac, av) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (launch_philo(&data) == EXIT_FAILURE)
+	philo = init_philo_list(1, g_data.ph_number);
+	if (launch_philo(philo) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	wait_all_philo_to_finish(&data);
-	if (!data.die)
+	wait_all_philo_to_finish();
+	if (!g_data.die)
 		write(1, FED, ft_strlen(FED));
-	ft_free_all(&data);
+	ft_free_all(philo);
 	return (EXIT_SUCCESS);
 }
