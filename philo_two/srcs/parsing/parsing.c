@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 15:49:31 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 16:49:39 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int		ft_parsing(int ac, char **av)
 	g_data.time_to_eat = ft_atoi_philo(av[3]);
 	g_data.time_to_sleep = ft_atoi_philo(av[4]);
 	g_data.time_must_eat = -1;
+	sem_unlink("msg");
+	sem_unlink("forks");
+	sem_unlink("lunch");
 	g_data.msg = sem_open("msg", O_CREAT | O_EXCL, 0644, 1);
 	g_data.forks = sem_open("forks", O_CREAT | O_EXCL, 0644, g_data.ph_number);
 	g_data.lunch = sem_open("lunch", O_CREAT | O_EXCL, 0644, g_data.ph_number / 2);

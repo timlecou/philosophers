@@ -6,13 +6,14 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:21:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 16:02:24 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 16:07:54 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_TWO_H
 # define PHILO_TWO_H
 # include "define.h"
+# include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>

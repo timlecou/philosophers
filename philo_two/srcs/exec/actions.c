@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:47:24 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 16:02:14 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 16:47:22 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int		eat(t_philo *philo)
 	philo->has_eat = 1;
 	if (philo->eat_count > 0)
 		philo->eat_count--;
-	if (sem_post(g_data.forks) == -1)
-		return (EXIT_FAILURE);
-	if (sem_post(g_data.forks) == -1)
-		return (EXIT_FAILURE);
+	sem_post(g_data.forks);
+	sem_post(g_data.forks);
 	return (EXIT_SUCCESS);
 }

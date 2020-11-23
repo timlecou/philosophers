@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:16:51 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 15:52:24 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 16:50:43 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_t_philo(t_philo *philo, int id)
 	philo->last_time_eat = 0;
 	philo->has_eat = 0;
 	philo->name = ft_itoa_name("eat ", id);
+	sem_unlink(philo->name);
 	philo->eat = sem_open(philo->name, O_CREAT | O_EXCL, 0644, 1);
 	philo->eat_count = g_data.time_must_eat;
 }
