@@ -6,7 +6,7 @@
 /*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 12:06:45 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 12:06:36 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ extern	t_data	g_data;
 
 int    ft_parsing(int ac, char **av)
 {
-    unsigned int     i;
-
-    i = 0;
     g_data.ph_number = ft_atoi_philo(av[1]);
     g_data.time_to_die = ft_atoi_philo(av[2]);
     g_data.time_to_die = ft_atoi_philo(av[2]);

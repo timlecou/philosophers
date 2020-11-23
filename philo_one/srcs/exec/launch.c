@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:43:27 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 12:00:15 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 12:06:53 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ int	start_even(t_philo *philo)
 
 int	launch_philo(t_philo *philo)
 {
-	unsigned int	i;
-
-	i = 0;
 	if (init_mutex() == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (start_odd(philo) == EXIT_FAILURE)
