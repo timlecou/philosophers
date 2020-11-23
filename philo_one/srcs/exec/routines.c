@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/22 17:53:17 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 10:03:45 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*start_routine(void *d)
 
 	data = (t_data*)d;
 	id = data->index;
+	printf("[%d]\n", id);
 	init_neighs(data, id);
 	while (!data->die)
 	{
@@ -47,6 +48,7 @@ void	*death_routine(void *d)
 
 	data = (t_data*)d;
 	i = data->index;
+	printf("{%d}\n", i);
 	time = 0;
 	while (!data->die)
 	{
