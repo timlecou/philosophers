@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 12:04:12 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 14:14:55 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ void	*start_routine(void *d)
 
 void	*death_routine(void *d)
 {
-	t_philo			*philo;
-	long 			time;
+	t_philo	*philo;
+	long	time;
 
 	philo = (t_philo*)d;
-	time = 0;
 	while (!g_data.die)
-	{
 		if (philo->has_eat == 1)
 		{
 			pthread_mutex_lock(&philo->eat);
@@ -66,6 +64,5 @@ void	*death_routine(void *d)
 			pthread_mutex_unlock(&philo->eat);
 			usleep(4000);
 		}
-	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:01:32 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 11:18:30 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 14:18:58 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 extern	t_data	g_data;
 
-long	get_time(void)
+long			get_time(void)
 {
-	struct timeval  tp;
+	struct timeval	tp;
 	long			milliseconds;
 
 	gettimeofday(&tp, NULL);
@@ -25,7 +25,7 @@ long	get_time(void)
 	return (milliseconds);
 }
 
-int		ft_strcmp(const char *s1, const char *s2)
+int				ft_strcmp(const char *s1, const char *s2)
 {
 	int i;
 
@@ -52,7 +52,7 @@ unsigned int	nb_chiffre(unsigned int n)
 	return (i);
 }
 
-void	ft_itoa_philo(unsigned int time,
+void			ft_itoa_philo(unsigned int time,
 	unsigned int n, char *txt, unsigned int i)
 {
 	unsigned int			j;
@@ -69,7 +69,7 @@ void	ft_itoa_philo(unsigned int time,
 		nb[--i] = (n % 10) + '0';
 		n = n / 10;
 	}
-	nb[--i] =  ' ';
+	nb[--i] = ' ';
 	if (time == 0)
 		nb[--i] = '0';
 	while (time > 0)
@@ -80,7 +80,7 @@ void	ft_itoa_philo(unsigned int time,
 	write(1, nb, ft_strlen(nb));
 }
 
-void	ft_print(int n, int id, char *state)
+void			ft_print(int n, int id, char *state)
 {
 	int		size;
 

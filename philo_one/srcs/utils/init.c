@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 11:49:46 by timlecou         ###   ########.fr       */
+/*   Created: 2020/11/23 14:16:51 by timlecou          #+#    #+#             */
+/*   Updated: 2020/11/23 14:17:54 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_philo	*init_philo_list(int i, int nb)
 
 void	init_data_struct(void)
 {
-    g_data.ph_number = 0;
-    g_data.number = 0;
-    g_data.all_fed = 0;
+	g_data.ph_number = 0;
+	g_data.number = 0;
+	g_data.all_fed = 0;
 	g_data.time_must_eat = 0;
 	g_data.time_to_die = 0;
 	g_data.time_to_eat = 0;
@@ -38,35 +38,35 @@ void	init_data_struct(void)
 	g_data.die = 0;
 }
 
-void    init_t_philo(t_philo *philo, int id)
+void	init_t_philo(t_philo *philo, int id)
 {
-    philo->id = id - 1;
-    philo->thread = 0;
+	philo->id = id - 1;
+	philo->thread = 0;
 	philo->fed = 0;
-    philo->death_thread = 0;
-    philo->has_fork = 0;
-    philo->last_time_eat = 0;
-    philo->has_eat = 0;
-    philo->r_neigh = 0;
-    philo->l_neigh = 0;
+	philo->death_thread = 0;
+	philo->has_fork = 0;
+	philo->last_time_eat = 0;
+	philo->has_eat = 0;
+	philo->r_neigh = 0;
+	philo->l_neigh = 0;
 	pthread_mutex_init(&philo->eat, NULL);
 	pthread_mutex_unlock(&philo->eat);
 	philo->eat_count = g_data.time_must_eat;
 }
 
-void       init_neighs(t_philo *philo)
+void	init_neighs(t_philo *philo)
 {
-    if (philo->id == 0)
-        philo->r_neigh = g_data.ph_number - 1;
-    else
-        philo->r_neigh = philo->id - 1;
-    if (philo->id == g_data.ph_number - 1)
-        philo->l_neigh = 0;
-    else
-        philo->l_neigh = philo->id + 1;
+	if (philo->id == 0)
+		philo->r_neigh = g_data.ph_number - 1;
+	else
+		philo->r_neigh = philo->id - 1;
+	if (philo->id == g_data.ph_number - 1)
+		philo->l_neigh = 0;
+	else
+		philo->l_neigh = philo->id + 1;
 }
 
-int	init_mutex(void)
+int		init_mutex(void)
 {
 	unsigned int i;
 

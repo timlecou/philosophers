@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_one.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timlecou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/11 15:06:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 11:41:20 by timlecou         ###   ########.fr       */
+/*   Created: 2020/11/23 14:21:33 by timlecou          #+#    #+#             */
+/*   Updated: 2020/11/23 14:22:13 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@
 # include "structures.h"
 
 t_philo			*init_philo_list(int i, int nb);
-int     		ft_atoi_philo(char *str);
+int				ft_atoi_philo(char *str);
 void			ft_itoa_philo(unsigned int time, unsigned int n,
 				char *txt, unsigned int i);
 unsigned int	nb_chiffre(unsigned int nb);
-void    		ft_putstr(char *str);
+void			ft_putstr(char *str);
 void			init_data_struct(void);
-void    		init_t_philo(t_philo *philo, int id);
-int     		ft_parsing(int ac, char **av);
-void    		ft_putnbr(int nb);
-void    		init_neighs(t_philo *philo);
-void    		ft_usleep(long value);
+void			init_t_philo(t_philo *philo, int id);
+int				ft_parsing(int ac, char **av);
+void			ft_putnbr(int nb);
+void			init_neighs(t_philo *philo);
+void			ft_usleep(long value);
 int				launch_philo(t_philo *philo);
-long    		get_time(void);
-void    		message(long time, int id, char *str);
-int     		ft_error(char *str);
+long			get_time(void);
+void			message(long time, int id, char *str);
+int				ft_error(char *str);
 int				ft_strlen(char *str);
 int				init_mutex(void);
 void			*start_routine(void *d);

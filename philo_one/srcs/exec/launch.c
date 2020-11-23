@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:43:27 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 12:06:53 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 14:16:01 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	start_odd(t_philo *philo)
 	i = 0;
 	while (i < g_data.ph_number)
 	{
-		if (pthread_create(&philo->thread, NULL, start_routine, (void*)philo) == -1)
+		if (pthread_create(&philo->thread, NULL, start_routine,
+				(void*)philo) == -1)
 			return (EXIT_FAILURE);
 		pthread_detach(philo->thread);
 		if (pthread_create(&philo->death_thread, NULL,
 						death_routine, (void*)philo) == -1)
 			return (EXIT_FAILURE);
 		pthread_detach(philo->death_thread);
-		usleep(200);
 		i += 2;
 		philo = philo->next;
 		if (philo)
@@ -45,14 +45,14 @@ int	start_even(t_philo *philo)
 	philo = philo->next;
 	while (i < g_data.ph_number)
 	{
-		if (pthread_create(&philo->thread, NULL, start_routine, (void*)philo) == -1)
+		if (pthread_create(&philo->thread, NULL, start_routine,
+			(void*)philo) == -1)
 			return (EXIT_FAILURE);
 		pthread_detach(philo->thread);
 		if (pthread_create(&philo->death_thread, NULL,
 						death_routine, (void*)philo) == -1)
 			return (EXIT_FAILURE);
 		pthread_detach(philo->death_thread);
-		usleep(200);
 		i += 2;
 		philo = philo->next;
 		if (philo)
@@ -71,4 +71,3 @@ int	launch_philo(t_philo *philo)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
-

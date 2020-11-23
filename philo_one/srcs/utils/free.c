@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 12:24:45 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 11:17:19 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/23 14:19:20 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void	ft_free_all(t_philo *philo)
 		free(tmp);
 		i++;
 	}
-	//free(tmp);
+	free(g_data.forks);
 }

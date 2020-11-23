@@ -3,13 +3,32 @@ SRCS = srcs/philo_one.c srcs/utils/utils.c srcs/utils/init.c srcs/parsing/parsin
 		srcs/exec/actions.c srcs/exec/launch.c srcs/exec/routines.c\
 		srcs/utils/free.c
 
-CC = gcc
-
-INCLUDES = ./includes
-
 NAME = philo_one
+OBJS			= $(SRCS:.c=.o)
 
-FLAGS = -Wextra -Werror -Wall -pthread
+CC				= gcc
+RM				= rm -f
+INCLUDE			= -I ./includes/
+CFLAGS			= -Wall -Werror -Wextra -pthread
 
-all:
-	$(CC) $(FLAGS) -o $(NAME) $(SRCS) -I $(INCLUDES)
+all: $(NAME)
+
+%.o: %.c
+				${CC} -c ${CFLAGS} ${INCLUDE} ${LIBS} $< -o $@
+
+$(NAME):		$(OBJS)
+				${CC} $(OBJS) ${INCLUDE} ${CFLAGS} -o $(NAME)
+
+clean:
+				$(RM) ${OBJS}
+
+fclean:			clean
+				$(RM) $(NAME)
+
+
+re:				fclean all
+
+.PHONY:			all clean fclean re
+#--------
+
+
