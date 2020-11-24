@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:21:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/24 10:25:19 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 11:21:11 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void			*start_routine(void *d);
 void			*death_routine(void *d);
 int				eat(t_philo *philo);
 void			ft_print(int time, int id, char *state);
+void			ft_print2(int time, int id, char *state);
 void			take_forks(t_philo *philo);
 int				ft_free_all(t_philo *philo);
 #endif

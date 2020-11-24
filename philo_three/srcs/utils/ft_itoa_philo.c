@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:01:32 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/24 10:57:04 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 11:20:37 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@ void			ft_itoa_philo(unsigned int time,
 		time = time / 10;
 	}
 	write(1, nb, ft_strlen(nb));
+}
+
+void			ft_print2(int n, int id, char *state)
+{
+	int		size;
+
+	size = nb_chiffre(n) + nb_chiffre(id) + ft_strlen(state) + 1;
+	ft_itoa_philo(n, id, state, size);
 }
 
 void			ft_print(int n, int id, char *state)

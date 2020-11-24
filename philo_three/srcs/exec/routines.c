@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:45:23 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/24 10:56:20 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 11:19:59 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	*death_routine(void *d)
 				if (!g_data.die && philo->eat_count != 0)
 				{
 					g_data.die = 1;
-					ft_print((int)(get_time()
+					sem_wait(g_data.msg);
+					ft_print2((int)(get_time()
 					- g_data.start_time), philo->id + 1, DIED);
 				}
 				sem_post(philo->eat);
