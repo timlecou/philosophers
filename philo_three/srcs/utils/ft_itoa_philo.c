@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 14:01:32 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 20:45:02 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:57:04 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void			ft_print(int n, int id, char *state)
 
 	size = nb_chiffre(n) + nb_chiffre(id) + ft_strlen(state) + 1;
 	sem_wait(g_data.msg);
-	if (g_data.die && ft_strcmp(DIED, state) != 0)
+	if (g_data.die && ft_strcmp(state, DIED) != 0)
 	{
 		sem_post(g_data.msg);
 		return ;

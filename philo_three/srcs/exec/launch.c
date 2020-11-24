@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 15:43:27 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 20:59:15 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:36:32 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	start_odd(t_philo *philo)
 	unsigned int	i;
 
 	i = 0;
+	g_data.tmp = philo;
 	while (i < g_data.ph_number)
 	{
 		philo->pid = fork();
@@ -29,6 +30,7 @@ int	start_odd(t_philo *philo)
 				return (EXIT_FAILURE);
 			pthread_detach(philo->death_thread);
 			start_routine(philo);
+			ft_free_all(g_data.tmp);
 			exit(EXIT_SUCCESS);
 		}
 		i += 2;
@@ -55,6 +57,7 @@ int	start_even(t_philo *philo)
 				return (EXIT_FAILURE);
 			pthread_detach(philo->death_thread);
 			start_routine(philo);
+			ft_free_all(g_data.tmp);
 			exit(EXIT_SUCCESS);
 		}
 		i += 2;
@@ -83,9 +86,11 @@ int	launch_philo(t_philo *philo)
 		j++;
 	while (i-- > 0 && j < g_data.ph_number)
 	{
-		kill(philo->pid, SIGINT);
+		kill(philo->pid, SIGKILL);
 		if (philo->next)
 			philo = philo->next;
 	}
+	while (waitpid(-1, &status, 0) > 0)
+		;
 	return (EXIT_SUCCESS);
 }

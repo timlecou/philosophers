@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:16:51 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 18:21:57 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:57:59 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_data_struct(void)
 	g_data.time_to_eat = 0;
 	g_data.time_to_sleep = 0;
 	g_data.start_time = 0;
+	g_data.tmp = NULL;
 	g_data.die = 0;
 }
 

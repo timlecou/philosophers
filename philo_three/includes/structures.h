@@ -6,28 +6,12 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:43:04 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 18:26:27 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:57:17 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
-
-typedef	struct		s_data
-{
-	long			start_time;
-	unsigned int	all_fed;
-	unsigned int	number;
-	unsigned int	die;
-	unsigned int	time_to_die;
-	unsigned int	time_to_eat;
-	unsigned int	time_to_sleep;
-	unsigned int	time_must_eat;
-	unsigned int	ph_number;
-	sem_t			*msg;
-	sem_t			*forks;
-	sem_t			*lunch;
-}					t_data;
 
 typedef struct		s_philo
 {
@@ -44,5 +28,22 @@ typedef struct		s_philo
 	unsigned int	eat_count;
 	struct s_philo	*next;
 }					t_philo;
+
+typedef	struct		s_data
+{
+	long			start_time;
+	unsigned int	all_fed;
+	unsigned int	number;
+	unsigned int	die;
+	unsigned int	time_to_die;
+	unsigned int	time_to_eat;
+	unsigned int	time_to_sleep;
+	unsigned int	time_must_eat;
+	unsigned int	ph_number;
+	t_philo			*tmp;
+	sem_t			*msg;
+	sem_t			*forks;
+	sem_t			*lunch;
+}					t_data;
 
 #endif

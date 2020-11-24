@@ -6,19 +6,13 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 10:45:07 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 20:29:44 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:51:59 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_three.h"
 
 t_data	g_data;
-
-void	wait_all_philo_to_finish(void)
-{
-	while (g_data.number != 0)
-		;
-}
 
 int		main(int ac, char **av)
 {
@@ -33,9 +27,8 @@ int		main(int ac, char **av)
 	philo = init_philo_list(1, g_data.ph_number);
 	if (launch_philo(philo) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	//wait_all_philo_to_finish();
 	if (!g_data.die && ac == 6)
 		write(1, FED, ft_strlen(FED));
-	ft_free_all(philo);
+	ft_free_all(g_data.tmp);
 	return (EXIT_SUCCESS);
 }

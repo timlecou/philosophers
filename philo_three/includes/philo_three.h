@@ -6,7 +6,7 @@
 /*   By: timlecou <timlecou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 14:21:33 by timlecou          #+#    #+#             */
-/*   Updated: 2020/11/23 20:51:21 by timlecou         ###   ########.fr       */
+/*   Updated: 2020/11/24 10:25:19 by timlecou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHILO_THREE_H
 # include "define.h"
 # include <fcntl.h>
+# include <sys/wait.h>
 # include <signal.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -48,5 +49,5 @@ void			*death_routine(void *d);
 int				eat(t_philo *philo);
 void			ft_print(int time, int id, char *state);
 void			take_forks(t_philo *philo);
-void			ft_free_all(t_philo *philo);
+int				ft_free_all(t_philo *philo);
 #endif
